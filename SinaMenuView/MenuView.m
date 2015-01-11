@@ -11,11 +11,11 @@
 #import <XHRealTimeBlur.h>
 #import <POP.h>
 
-#define MenuButtonImageHeight 90
-#define MenuButtonTitleHeight 20
+#define MenuButtonHeight 110
+#define MenuButtonWidth 110
 #define MenuButtonVerticalPadding 10
 #define MenuButtonHorizontalMargin 10
-#define MenuButtonAnimationTime 0.36
+#define MenuButtonAnimationTime 0.2
 #define MenuButtonAnimationInterval (MenuButtonAnimationTime / 5)
 
 #define kMenuButtonBaseTag 100
@@ -51,7 +51,7 @@
     
     typeof(self) __weak weakSelf = self;
     _realTimeBlur = [[XHRealTimeBlur alloc] initWithFrame:self.bounds];
-    _realTimeBlur.showDuration = 0.5;
+    _realTimeBlur.showDuration = 0.4;
     _realTimeBlur.disMissDuration = 0.8;
     _realTimeBlur.willShowBlurViewcomplted = ^(void) {
         [weakSelf showButtons];
@@ -89,7 +89,7 @@
         MenuItem *menuItem = items[index];
         MenuButton *menuButton = (MenuButton *)[self viewWithTag:kMenuButtonBaseTag + index];
         
-        CGRect toRect = [self frameForButtonAtIndex:index];
+        CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:3 perColumItemCount:3 itemWidth:MenuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
         
         CGRect fromRect = toRect;
         fromRect.origin.y = CGRectGetHeight(self.bounds);
@@ -131,26 +131,39 @@
     return self.items;
 }
 
-- (CGRect)frameForButtonAtIndex:(NSUInteger)index {
-    NSArray *items = [self menuItems];
-    NSUInteger columnCount = 3;
-    NSUInteger columnIndex =  index % columnCount;
+/**
+ *  通过目标的参数，获取一个grid布局
+ *
+ *  @param perRowItemCount   每行有多少列
+ *  @param perColumItemCount 每列有多少行
+ *  @param itemWidth         gridItem的宽度
+ *  @param itemHeight        gridItem的高度
+ *  @param paddingX          gridItem之间的X轴间隔
+ *  @param paddingY          gridItem之间的Y轴间隔
+ *  @param index             某个gridItem所在的index序号
+ *  @param page              某个gridItem所在的页码
+ *
+ *  @return 返回一个已经处理好的gridItem frame
+ */
+- (CGRect)getFrameWithItemCount:(NSInteger)itemCount
+                perRowItemCount:(NSInteger)perRowItemCount
+              perColumItemCount:(NSInteger)perColumItemCount
+                      itemWidth:(CGFloat)itemWidth
+                     itemHeight:(NSInteger)itemHeight
+                       paddingX:(CGFloat)paddingX
+                       paddingY:(CGFloat)paddingY
+                        atIndex:(NSInteger)index
+                         onPage:(NSInteger)page {
+    NSUInteger rowCount = itemCount / perRowItemCount + (itemCount % perColumItemCount > 0 ? 1 : 0);
+    CGFloat insetY = (CGRectGetHeight(self.bounds) - (itemHeight + paddingY) * rowCount) / 2.0;
     
-    NSUInteger rowCount = items.count / columnCount + (items.count%columnCount>0?1:0);
-    NSUInteger rowIndex = index / columnCount;
+    CGFloat originX = (index % perRowItemCount) * (itemWidth + paddingX) + paddingX + (page * CGRectGetWidth(self.bounds));
+    CGFloat originY = ((index / perRowItemCount) - perColumItemCount * page) * (itemHeight + paddingY) + paddingY;
     
-    CGFloat itemHeight = (MenuButtonImageHeight + MenuButtonTitleHeight) * rowCount + (rowCount > 1 ? (rowCount - 1) * MenuButtonHorizontalMargin : 0);
-    CGFloat offsetY = (self.bounds.size.height - itemHeight) / 2.0;
-    CGFloat verticalPadding = (self.bounds.size.width - MenuButtonHorizontalMargin * 2 - MenuButtonImageHeight * 3) / 2.0;
-    
-    CGFloat offsetX = MenuButtonHorizontalMargin;
-    offsetX += (MenuButtonImageHeight+ verticalPadding) * columnIndex;
-    
-    offsetY += (MenuButtonImageHeight + MenuButtonTitleHeight + MenuButtonVerticalPadding) * rowIndex;
-    
-    return CGRectMake(offsetX, offsetY, MenuButtonImageHeight, (MenuButtonImageHeight + MenuButtonTitleHeight));
-    
+    CGRect itemFrame = CGRectMake(originX, originY + insetY, itemWidth, itemHeight);
+    return itemFrame;
 }
+
 
 #pragma mark - Animation
 
