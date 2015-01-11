@@ -12,7 +12,6 @@
 #import <POP.h>
 
 #define MenuButtonHeight 110
-#define MenuButtonWidth 110
 #define MenuButtonVerticalPadding 10
 #define MenuButtonHorizontalMargin 10
 #define MenuButtonAnimationTime 0.2
@@ -82,6 +81,8 @@
 - (void)showButtons {
     NSArray *items = [self menuItems];
     
+    NSInteger perRowItemCount = 3;
+    CGFloat menuButtonWidth = (CGRectGetWidth(self.bounds) - ((perRowItemCount + 1) * MenuButtonHorizontalMargin)) / perRowItemCount;
     
     typeof(self) __weak weakSelf = self;
     for (int index = 0; index < items.count; index ++) {
@@ -89,7 +90,7 @@
         MenuItem *menuItem = items[index];
         MenuButton *menuButton = (MenuButton *)[self viewWithTag:kMenuButtonBaseTag + index];
         
-        CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:3 perColumItemCount:3 itemWidth:MenuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
+        CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:perRowItemCount perColumItemCount:3 itemWidth:menuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
         
         CGRect fromRect = toRect;
         fromRect.origin.y = CGRectGetHeight(self.bounds);
