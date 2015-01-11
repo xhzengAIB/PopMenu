@@ -80,15 +80,24 @@
 }
 
 - (void)hiddenAnimation {
-    [self hiddenAnimationCompletion:NULL];
+    [self hiddenAnimationCompletion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void)hiddenAnimationCompletion:(void (^)(BOOL finished))completion {
+    if (self.willDismissBlurViewCompleted) {
+        self.willDismissBlurViewCompleted();
+    }
+    
     [UIView animateWithDuration:self.disMissDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.alpha = 0.0;
     } completion:^(BOOL finished) {
         if (completion) {
             completion(finished);
+        }
+        if (self.didDismissBlurViewCompleted) {
+            self.didDismissBlurViewCompleted(finished);
         }
         self.showed = NO;
         [self removeFromSuperview];
@@ -96,13 +105,8 @@
 }
 
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
-    if (self.willDismissBlurViewCompleted) {
-        self.willDismissBlurViewCompleted();
-    }
     [self hiddenAnimationCompletion:^(BOOL finished) {
-        if (self.didDismissBlurViewCompleted) {
-            self.didDismissBlurViewCompleted(finished);
-        }
+        
     }];
 }
 
@@ -169,7 +173,7 @@
     self.showDuration = self.disMissDuration = 0.3;
     self.blurStyle = XHBlurStyleTranslucent;
     self.backgroundColor = [UIColor clearColor];
-
+    
     _hasTapGestureEnable = NO;
 }
 

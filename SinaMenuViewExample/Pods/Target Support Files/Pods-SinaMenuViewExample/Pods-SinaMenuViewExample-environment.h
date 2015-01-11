@@ -9,7 +9,7 @@
 // XHRealTimeBlur
 #define COCOAPODS_POD_AVAILABLE_XHRealTimeBlur
 #define COCOAPODS_VERSION_MAJOR_XHRealTimeBlur 1
-#define COCOAPODS_VERSION_MINOR_XHRealTimeBlur 6
+#define COCOAPODS_VERSION_MINOR_XHRealTimeBlur 7
 #define COCOAPODS_VERSION_PATCH_XHRealTimeBlur 0
 
 // pop
