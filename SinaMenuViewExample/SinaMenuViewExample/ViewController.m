@@ -47,6 +47,9 @@
     [items addObject:menuItem];
     
     MenuView *centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:items];
+    centerButton.didSelectedItemCompletion = ^(MenuItem *selectedItem) {
+        
+    };
     [centerButton showMenuAtView:self.view];
 }
 

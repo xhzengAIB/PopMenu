@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MenuItem.h"
 
-typedef void(^DidSelectedItemBlock)(MenuItem *item);
+typedef void(^DidSelectedItemBlock)(MenuItem *selectedItem);
 
 @interface MenuView : UIView
 
 @property (nonatomic, strong, readonly) NSArray *items;
+
+@property (nonatomic, copy) DidSelectedItemBlock didSelectedItemCompletion;
 
 - (instancetype)initWithFrame:(CGRect)frame
                         items:(NSArray *)items;

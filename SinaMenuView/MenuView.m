@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong, readwrite) NSArray *items;
 
+@property (nonatomic, strong) MenuItem *selectedItem;
+
 @end
 
 @implementation MenuView
@@ -60,6 +62,9 @@
         [weakSelf hidenButtons];
     };
     _realTimeBlur.didDismissBlurViewCompleted = ^(BOOL finished) {
+        if (weakSelf.didSelectedItemCompletion) {
+            weakSelf.didSelectedItemCompletion(weakSelf.selectedItem);
+        }
         [weakSelf removeFromSuperview];
     };
     _realTimeBlur.hasTapGestureEnable = YES;
@@ -88,6 +93,7 @@
     for (int index = 0; index < items.count; index ++) {
         
         MenuItem *menuItem = items[index];
+        menuItem.index = index;
         MenuButton *menuButton = (MenuButton *)[self viewWithTag:kMenuButtonBaseTag + index];
         
         CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:perRowItemCount perColumItemCount:3 itemWidth:menuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
@@ -98,6 +104,7 @@
             menuButton = [[MenuButton alloc] initWithFrame:fromRect menuItem:menuItem];
             menuButton.tag = kMenuButtonBaseTag + index;
             menuButton.didSelctedItemCompleted = ^(MenuItem *menuItem) {
+                weakSelf.selectedItem = menuItem;
                 [weakSelf dismissMenu];
             };
             [self addSubview:menuButton];
