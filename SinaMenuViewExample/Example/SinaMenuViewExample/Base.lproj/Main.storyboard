@@ -16,14 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touch the Screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdE-ri-AUL">
-                                <rect key="frame" x="233" y="289" width="134" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0117.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="QM8-hN-3me">
+                                <rect key="frame" x="103" y="0.0" width="394" height="293"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="394" id="BoL-gE-SeY"/>
+                                    <constraint firstAttribute="height" constant="293" id="iKw-eC-FDF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch the Screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdE-ri-AUL">
+                                <rect key="frame" x="233" y="428" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="QM8-hN-3me" secondAttribute="centerX" id="035-c3-AiR"/>
+                            <constraint firstItem="HdE-ri-AUL" firstAttribute="top" secondItem="QM8-hN-3me" secondAttribute="bottom" constant="135" id="mX1-rr-mcy"/>
+                            <constraint firstAttribute="centerY" secondItem="HdE-ri-AUL" secondAttribute="centerY" constant="-138.5" id="v1P-N6-t6p"/>
+                            <constraint firstItem="HdE-ri-AUL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x9Y-rb-1vs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -31,4 +44,7 @@
             <point key="canvasLocation" x="204" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="IMG_0117.JPG" width="1936" height="1936"/>
+    </resources>
 </document>
