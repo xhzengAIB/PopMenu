@@ -1,0 +1,5 @@
+#include "Pods-SinaMenuViewExample-XHRealTimeBlur.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/XHRealTimeBlur" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/XHRealTimeBlur" "${PODS_ROOT}/Headers/Public/pop"
+OTHER_LDFLAGS = ${PODS_SINAMENUVIEWEXAMPLE_XHREALTIMEBLUR_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

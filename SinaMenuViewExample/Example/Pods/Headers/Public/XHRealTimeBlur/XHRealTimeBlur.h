@@ -1,0 +1,1 @@
+../../../XHRealTimeBlur/XHRealTimeBlur/XHRealTimeBlur.h
