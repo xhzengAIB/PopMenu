@@ -1,12 +1,24 @@
-![image](https://github.com/xhzengAIB/LearnEnglish/raw/master/Screenshots/XHSinaMenuViewExample.gif)
+SinaMenuView
+====================
 
-# SinaMenuView
+![Version](https://img.shields.io/cocoapods/v/TWPhotoPicker.svg)
+![License](https://img.shields.io/cocoapods/l/TWPhotoPicker.svg)
+![Platform](https://img.shields.io/cocoapods/p/TWPhotoPicker.svg)
+
 SinaMenuView is pop animation menu inspired by sina weibo app.
 
-## Requirements
+## Screenshots
+![image](https://github.com/xhzengAIB/LearnEnglish/raw/master/Screenshots/XHSinaMenuViewExample.gif)
 
-* iOS 7.0+ 
-* ARC
+## Installation
+
+With [CocoaPods](http://cocoapods.org/), add this line to your `Podfile`.
+
+```
+pod 'XHSinaMenuView'
+```
+
+and run `pod install`, then you're all done!
 
 ## How to use
 
@@ -35,15 +47,10 @@ SinaMenuView is pop animation menu inspired by sina weibo app.
 
 ```
 
-## Podfile
+## Requirements
 
-[CocoaPods](http://cocoapods.org/) is the recommended method to install XHSinaMenuView, just add the following line to `Podfile`
-
-```
-pod 'XHSinaMenuView'
-```
-
-and run `pod install`, then you're all done!
+* iOS 7.0+ 
+* ARC
 
 ## License
 
