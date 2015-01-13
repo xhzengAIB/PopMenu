@@ -48,7 +48,7 @@ MenuView *centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:
 
 ## Requirements
 
-* iOS 7.0+ 
+* iOS 6.0+ 
 * ARC
 
 ## License
