@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "MenuItem.h"
 
+typedef NS_ENUM(NSInteger, MenuViewAnimationType) {
+    kMenuViewAnimationTypeSina = 0,
+    kMenuViewAnimationTypeNetEase = 1,
+};
+
 typedef void(^DidSelectedItemBlock)(MenuItem *selectedItem);
 
 @interface MenuView : UIView
+
+@property (nonatomic, assign) MenuViewAnimationType menuViewAnimationType;
+
+@property (nonatomic, assign, readonly) BOOL isShowed;
 
 @property (nonatomic, strong, readonly) NSArray *items;
 

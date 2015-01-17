@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) MenuItem *selectedItem;
 
+@property (nonatomic, assign, readwrite) BOOL isShowed;
+
 @end
 
 @implementation MenuView
@@ -52,9 +54,10 @@
     
     typeof(self) __weak weakSelf = self;
     _realTimeBlur = [[XHRealTimeBlur alloc] initWithFrame:self.bounds];
-    _realTimeBlur.showDuration = 0.4;
-    _realTimeBlur.disMissDuration = 0.8;
+    _realTimeBlur.showDuration = 0.3;
+    _realTimeBlur.disMissDuration = 0.5;
     _realTimeBlur.willShowBlurViewcomplted = ^(void) {
+        weakSelf.isShowed = YES;
         [weakSelf showButtons];
     };
     
@@ -62,6 +65,7 @@
         [weakSelf hidenButtons];
     };
     _realTimeBlur.didDismissBlurViewCompleted = ^(BOOL finished) {
+        weakSelf.isShowed = NO;
         if (weakSelf.didSelectedItemCompletion) {
             weakSelf.didSelectedItemCompletion(weakSelf.selectedItem);
         }
@@ -73,11 +77,17 @@
 #pragma mark - 公开方法
 
 - (void)showMenuAtView:(UIView *)containerView {
+    if (self.isShowed) {
+        return;
+    }
     [containerView addSubview:self];
     [self.realTimeBlur showBlurViewAtView:self];
 }
 
 - (void)dismissMenu {
+    if (!self.isShowed) {
+        return;
+    }
     [self.realTimeBlur disMiss];
 }
 
@@ -100,6 +110,9 @@
         
         CGRect fromRect = toRect;
         fromRect.origin.y = CGRectGetHeight(self.bounds);
+        if (self.menuViewAnimationType == kMenuViewAnimationTypeNetEase) {
+            fromRect.origin.x = (CGRectGetWidth(self.bounds) - menuButtonWidth) / 2.0;
+        }
         if (!menuButton) {
             menuButton = [[MenuButton alloc] initWithFrame:fromRect menuItem:menuItem];
             menuButton.tag = kMenuButtonBaseTag + index;
@@ -128,7 +141,9 @@
         
         CGRect toRect = fromRect;
         toRect.origin.y = CGRectGetHeight(self.bounds);
-        
+        if (self.menuViewAnimationType == kMenuViewAnimationTypeNetEase) {
+            toRect.origin.x = CGRectGetMidX(self.bounds) - CGRectGetMidX(menuButton.bounds);
+        }
         double delayInSeconds = (items.count - index) * MenuButtonAnimationInterval;
         
         [self initailzerAnimationWithToPostion:toRect formPostion:fromRect atView:menuButton beginTime:delayInSeconds];

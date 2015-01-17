@@ -12,6 +12,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) MenuView *centerButton;
+
 @end
 
 @implementation ViewController
@@ -46,11 +48,17 @@
     menuItem = [[MenuItem alloc] initWithTitle:@"Facebook" iconName:@"post_type_bubble_facebook" glowColor:[UIColor colorWithRed:0.687 green:0.000 blue:0.000 alpha:1.000] index:0];
     [items addObject:menuItem];
     
-    MenuView *centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:items];
-    centerButton.didSelectedItemCompletion = ^(MenuItem *selectedItem) {
+    if (!_centerButton) {
+        _centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:items];
+        _centerButton.menuViewAnimationType = kMenuViewAnimationTypeNetEase;
+    }
+    if (_centerButton.isShowed) {
+        return;
+    }
+    _centerButton.didSelectedItemCompletion = ^(MenuItem *selectedItem) {
         
     };
-    [centerButton showMenuAtView:self.view];
+    [_centerButton showMenuAtView:self.view];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
