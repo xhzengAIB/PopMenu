@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name         = "XHSinaMenuView"
+  s.name         = "PopMennu"
   s.version      = "2.0"
-  s.summary      = "PopMenu is pop animation menu inspired by sina weibo / net ease app."
+  s.summary      = "PopMenu is pop animation menu inspired by Sina weibo / NetEse app."
   s.homepage     = "https://github.com/xhzengAIB/PopMenu"
   s.license      = "MIT"
   s.authors      = { "xhzengAIB" => "xhzengAIB@gmail.com" }
