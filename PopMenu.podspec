@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors      = { "xhzengAIB" => "xhzengAIB@gmail.com" }
   s.source       = { :git => "https://github.com/xhzengAIB/PopMenu.git", :tag => "2.0" }
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
-  s.platform     = :ios, '6.0'
+  s.platform     = :ios, '7.0'
   s.source_files = 'PopMenu/*.{h,m}'
   s.requires_arc = true
   s.dependency 'XHRealTimeBlur'
