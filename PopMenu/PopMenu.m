@@ -29,6 +29,9 @@
 
 @property (nonatomic, assign, readwrite) BOOL isShowed;
 
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGPoint endPoint;
+
 @end
 
 @implementation PopMenu
@@ -77,9 +80,27 @@
 #pragma mark - 公开方法
 
 - (void)showMenuAtView:(UIView *)containerView {
+    CGPoint startPoint = CGPointMake(0, CGRectGetHeight(self.bounds));
+    CGPoint endPoint = startPoint;
+    switch (self.menuAnimationType) {
+        case kPopMenuAnimationTypeNetEase:
+            startPoint.x = CGRectGetMidX(self.bounds);
+            endPoint.x = startPoint.x;
+            break;
+        default:
+            break;
+    }
+    [self showMenuAtView:containerView startPoint:startPoint endPoint:endPoint];
+}
+
+- (void)showMenuAtView:(UIView *)containerView
+            startPoint:(CGPoint)startPoint
+              endPoint:(CGPoint)endPoint {
     if (self.isShowed) {
         return;
     }
+    self.startPoint = startPoint;
+    self.endPoint = endPoint;
     [containerView addSubview:self];
     [self.realTimeBlur showBlurViewAtView:self];
 }
@@ -109,9 +130,17 @@
         CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:perRowItemCount perColumItemCount:3 itemWidth:menuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
         
         CGRect fromRect = toRect;
-        fromRect.origin.y = CGRectGetHeight(self.bounds);
-        if (self.menuAnimationType == kPopMenuAnimationTypeNetEase) {
-            fromRect.origin.x = (CGRectGetWidth(self.bounds) - menuButtonWidth) / 2.0;
+        
+        switch (self.menuAnimationType) {
+            case kPopMenuAnimationTypeSina:
+                fromRect.origin.y = self.startPoint.y;
+                break;
+            case kPopMenuAnimationTypeNetEase:
+                fromRect.origin.x = self.startPoint.x - menuButtonWidth / 2.0;
+                fromRect.origin.y = self.startPoint.y;
+                break;
+            default:
+                break;
         }
         if (!menuButton) {
             menuButton = [[MenuButton alloc] initWithFrame:fromRect menuItem:menuItem];
@@ -140,9 +169,17 @@
         CGRect fromRect = menuButton.frame;
         
         CGRect toRect = fromRect;
-        toRect.origin.y = CGRectGetHeight(self.bounds);
-        if (self.menuAnimationType == kPopMenuAnimationTypeNetEase) {
-            toRect.origin.x = CGRectGetMidX(self.bounds) - CGRectGetMidX(menuButton.bounds);
+        
+        switch (self.menuAnimationType) {
+            case kPopMenuAnimationTypeSina:
+                toRect.origin.y = self.endPoint.y;
+                break;
+            case kPopMenuAnimationTypeNetEase:
+                toRect.origin.x = self.endPoint.x - CGRectGetMidX(menuButton.bounds);
+                toRect.origin.y = self.endPoint.y;
+                break;
+            default:
+                break;
         }
         double delayInSeconds = (items.count - index) * MenuButtonAnimationInterval;
         

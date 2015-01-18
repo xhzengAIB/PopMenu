@@ -58,7 +58,10 @@
     _popMenu.didSelectedItemCompletion = ^(MenuItem *selectedItem) {
         
     };
+    
     [_popMenu showMenuAtView:self.view];
+    
+//    [_popMenu showMenuAtView:self.view startPoint:CGPointMake(CGRectGetWidth(self.view.bounds) - 60, CGRectGetHeight(self.view.bounds)) endPoint:CGPointMake(60, CGRectGetHeight(self.view.bounds))];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

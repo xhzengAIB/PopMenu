@@ -30,6 +30,9 @@ typedef void(^DidSelectedItemBlock)(MenuItem *selectedItem);
                         items:(NSArray *)items;
 
 - (void)showMenuAtView:(UIView *)containerView;
+- (void)showMenuAtView:(UIView *)containerView
+            startPoint:(CGPoint)startPoint
+              endPoint:(CGPoint)endPoint;
 - (void)dismissMenu;
 
 @end
