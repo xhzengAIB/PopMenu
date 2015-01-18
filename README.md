@@ -1,10 +1,10 @@
-SinaMenuView
+PopMenu
 ====================
 
 ![License](https://img.shields.io/cocoapods/l/TWPhotoPicker.svg)
 ![Platform](https://img.shields.io/cocoapods/p/TWPhotoPicker.svg)
 
-SinaMenuView is pop animation menu inspired by sina weibo app.
+PopMenu is pop animation menu inspired by sina weibo / net ease app.
 
 ## Screenshots
 ![image](https://github.com/xhzengAIB/LearnEnglish/raw/master/Screenshots/XHSinaMenuViewExample.gif)
@@ -14,7 +14,7 @@ SinaMenuView is pop animation menu inspired by sina weibo app.
 With [CocoaPods](http://cocoapods.org/), add this line to your `Podfile`.
 
 ```
-pod 'XHSinaMenuView'
+pod 'PopMenu'
 ```
 
 and run `pod install`, then you're all done!
@@ -41,8 +41,8 @@ menuItem = [[MenuItem alloc] initWithTitle:@"Youtube" iconName:@"post_type_bubbl
 menuItem = [[MenuItem alloc] initWithTitle:@"Facebook" iconName:@"post_type_bubble_facebook" glowColor:[UIColor colorWithRed:0.687 green:0.000 blue:0.000 alpha:1.000] index:0];
 [items addObject:menuItem];
     
-MenuView *centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:items];
-[centerButton showMenuAtView:self.view];
+PopMenu *popMenu = [[PopMenu alloc] initWithFrame:self.view.bounds items:items];
+[popMenu showMenuAtView:self.view];
 
 ```
 
@@ -53,4 +53,4 @@ MenuView *centerButton = [[MenuView alloc] initWithFrame:self.view.bounds items:
 
 ## License
 
-English: SinaMenuView is available under the MIT license, see the LICENSE file for more information.     
+English: PopMenu is available under the MIT license, see the LICENSE file for more information.     
