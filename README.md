@@ -4,7 +4,7 @@ PopMenu
 ![License](https://img.shields.io/cocoapods/l/TWPhotoPicker.svg)
 ![Platform](https://img.shields.io/cocoapods/p/TWPhotoPicker.svg)
 
-PopMenu is pop animation menu inspired by sina weibo / net ease app.
+PopMenu is pop animation menu inspired by Sina weibo / NetEase app.
 
 ## Screenshots
 ![image](https://github.com/xhzengAIB/LearnEnglish/raw/master/Screenshots/XHSinaMenuViewExample.gif)
