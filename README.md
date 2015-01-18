@@ -48,7 +48,7 @@ PopMenu *popMenu = [[PopMenu alloc] initWithFrame:self.view.bounds items:items];
 
 ## Requirements
 
-* iOS 6.0+ 
+* iOS 7.0+ 
 * ARC
 
 ## License
