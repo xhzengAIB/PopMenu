@@ -69,8 +69,11 @@
     };
     _realTimeBlur.didDismissBlurViewCompleted = ^(BOOL finished) {
         weakSelf.isShowed = NO;
-        if (weakSelf.didSelectedItemCompletion) {
-            weakSelf.didSelectedItemCompletion(weakSelf.selectedItem);
+        if (finished && weakSelf.selectedItem) {
+            if (weakSelf.didSelectedItemCompletion) {
+                weakSelf.didSelectedItemCompletion(weakSelf.selectedItem);
+                weakSelf.selectedItem = nil;
+            }
         }
         [weakSelf removeFromSuperview];
     };
