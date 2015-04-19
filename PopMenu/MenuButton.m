@@ -26,8 +26,9 @@
 
 @implementation MenuButton
 
-- (instancetype)initWithFrame:(CGRect)frame
-                     menuItem:(MenuItem *)menuItem {
+
+
+- (instancetype)initWithFrame:(CGRect)frame menuItem:(MenuItem *)menuItem {
     
     self = [super initWithFrame:frame];
     if (self) {
