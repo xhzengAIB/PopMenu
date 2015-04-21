@@ -18,10 +18,12 @@
  *  设置阴影的偏移值（+，+）表示向左下偏移 默认为 （0,0）
  */
 @property (nonatomic, assign) CGSize glowOffset;
+
 /**
  *  设置阴影的模糊度 默认为： 5
  */
 @property (nonatomic, assign) CGFloat glowAmount;
+
 /**
  *  设置阴影的颜色 默认为 grayColor 灰色
  */

@@ -32,27 +32,36 @@ typedef void(^DidSelectedItemBlock)(MenuItem *selectedItem);
  *  菜单动画格式
  */
 @property (nonatomic, assign) PopMenuAnimationType menuAnimationType;
+
 /**
  *  是否显示
  */
 @property (nonatomic, assign, readonly) BOOL isShowed;
+
 /**
  *  菜单中菜单元素
  */
 @property (nonatomic, strong, readonly) NSArray *items;
+
+// 每行有多少列 Default is 3
+@property (nonatomic, assign) NSInteger perRowItemCount;
+
 /**
  *  点击菜单元素,Block会把点击的菜单元素当成参数返回给用户，用户可以拿到菜单元素对点击，做相应的操作
  */
 @property (nonatomic, copy) DidSelectedItemBlock didSelectedItemCompletion;
 
 #pragma mark - init 初始化
+
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
 
 #pragma mark - show
 #pragma mark 将菜单显示到某个视图上
+
 - (void)showMenuAtView:(UIView *)containerView;
 
 #pragma mark 控制菜单从哪个点的进 和 出
+
 /**
  *  将菜单  开始 现实到哪个point 上  在哪个 point 结束
  *

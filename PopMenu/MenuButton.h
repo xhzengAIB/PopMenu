@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class MenuItem;
+
 typedef void(^DidSelctedItemCompletedBlock)(MenuItem *menuItem);
 
 @interface MenuButton : UIView

@@ -10,14 +10,19 @@
 
 @implementation MenuItem
 
-
-- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName glowColor:(UIColor *)glowColor index:(NSUInteger)index {
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor
+                        index:(NSUInteger)index {
     MenuItem *item =  [self initWithTitle:title iconName:iconName glowColor:glowColor];
     item.index = index;
     return item;
 }
-- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName glowColor:(UIColor *)glowColor{
-   
+
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor {
+    
     if ( self = [super init]) {
         self.title = title;
         self.iconImage = [UIImage imageNamed:iconName];
@@ -26,8 +31,11 @@
     return self;
 }
 
-+(instancetype)itemWithTitle:(NSString *)title iconName:(NSString *)iconName glowColor:(UIColor *)glowColor{
++ (instancetype)itemWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor {
     MenuItem *item = [[self alloc ] initWithTitle:title iconName:iconName glowColor:glowColor];
     return item;
 }
+
 @end

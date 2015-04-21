@@ -26,10 +26,7 @@
 
 @implementation MenuButton
 
-
-
 - (instancetype)initWithFrame:(CGRect)frame menuItem:(MenuItem *)menuItem {
-    
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code

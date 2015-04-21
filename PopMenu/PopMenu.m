@@ -40,7 +40,6 @@
 #pragma mark - Life Cycle
 
 - (id)initWithFrame:(CGRect)frame items:(NSArray *)items {
-    
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -54,6 +53,7 @@
 // 设置属性
 - (void)setup {
     self.backgroundColor = [UIColor clearColor];
+    self.perRowItemCount = 3;
     
     typeof(self) __weak weakSelf = self;
     _realTimeBlur = [[XHRealTimeBlur alloc] initWithFrame:self.bounds];
@@ -120,7 +120,8 @@
 - (void)showButtons {
     NSArray *items = [self menuItems];
     
-    NSInteger perRowItemCount = 3;
+    NSInteger perRowItemCount = self.perRowItemCount;
+    
     CGFloat menuButtonWidth = (CGRectGetWidth(self.bounds) - ((perRowItemCount + 1) * MenuButtonHorizontalMargin)) / perRowItemCount;
     
     typeof(self) __weak weakSelf = self;
@@ -130,7 +131,15 @@
         menuItem.index = index;
         MenuButton *menuButton = (MenuButton *)[self viewWithTag:kMenuButtonBaseTag + index];
         
-        CGRect toRect = [self getFrameWithItemCount:items.count perRowItemCount:perRowItemCount perColumItemCount:3 itemWidth:menuButtonWidth itemHeight:MenuButtonHeight paddingX:MenuButtonVerticalPadding paddingY:MenuButtonHorizontalMargin atIndex:index onPage:0];
+        CGRect toRect = [self getFrameWithItemCount:items.count
+                                    perRowItemCount:perRowItemCount
+                                  perColumItemCount:items.count/perRowItemCount+(items.count%perRowItemCount>0?1:0)
+                                          itemWidth:menuButtonWidth
+                                         itemHeight:MenuButtonHeight
+                                           paddingX:MenuButtonVerticalPadding
+                                           paddingY:MenuButtonHorizontalMargin
+                                            atIndex:index
+                                             onPage:0];
         
         CGRect fromRect = toRect;
         
@@ -210,7 +219,15 @@
  *
  *  @return 返回一个已经处理好的gridItem frame
  */
-- (CGRect)getFrameWithItemCount:(NSInteger)itemCount perRowItemCount:(NSInteger)perRowItemCount          perColumItemCount:(NSInteger)perColumItemCount itemWidth:(CGFloat)itemWidth itemHeight:(NSInteger)itemHeight paddingX:(CGFloat)paddingX  paddingY:(CGFloat)paddingY atIndex:(NSInteger)index                onPage:(NSInteger)page {
+- (CGRect)getFrameWithItemCount:(NSInteger)itemCount
+                perRowItemCount:(NSInteger)perRowItemCount
+              perColumItemCount:(NSInteger)perColumItemCount
+                      itemWidth:(CGFloat)itemWidth
+                     itemHeight:(NSInteger)itemHeight
+                       paddingX:(CGFloat)paddingX
+                       paddingY:(CGFloat)paddingY
+                        atIndex:(NSInteger)index
+                         onPage:(NSInteger)page {
     
     NSUInteger rowCount = itemCount / perRowItemCount + (itemCount % perColumItemCount > 0 ? 1 : 0);
     CGFloat insetY = (CGRectGetHeight(self.bounds) - (itemHeight + paddingY) * rowCount) / 2.0;
