@@ -39,8 +39,7 @@
 
 #pragma mark - Life Cycle
 
-- (id)initWithFrame:(CGRect)frame
-              items:(NSArray *)items {
+- (id)initWithFrame:(CGRect)frame items:(NSArray *)items {
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -52,6 +51,7 @@
     return self;
 }
 
+// 设置属性
 - (void)setup {
     self.backgroundColor = [UIColor clearColor];
     
@@ -96,9 +96,7 @@
     [self showMenuAtView:containerView startPoint:startPoint endPoint:endPoint];
 }
 
-- (void)showMenuAtView:(UIView *)containerView
-            startPoint:(CGPoint)startPoint
-              endPoint:(CGPoint)endPoint {
+- (void)showMenuAtView:(UIView *)containerView startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
     if (self.isShowed) {
         return;
     }
@@ -116,7 +114,9 @@
 }
 
 #pragma mark - 私有方法
-
+/**
+ *  添加菜单按钮
+ */
 - (void)showButtons {
     NSArray *items = [self menuItems];
     
@@ -162,7 +162,9 @@
         [self initailzerAnimationWithToPostion:toRect formPostion:fromRect atView:menuButton beginTime:delayInSeconds];
     }
 }
-
+/**
+ *  隐藏按钮
+ */
 - (void)hidenButtons {
     NSArray *items = [self menuItems];
     
@@ -195,7 +197,7 @@
 }
 
 /**
- *  通过目标的参数，获取一个grid布局
+ *  通过目标的参数，获取一个grid布局  网格布局
  *
  *  @param perRowItemCount   每行有多少列
  *  @param perColumItemCount 每列有多少行
@@ -208,15 +210,8 @@
  *
  *  @return 返回一个已经处理好的gridItem frame
  */
-- (CGRect)getFrameWithItemCount:(NSInteger)itemCount
-                perRowItemCount:(NSInteger)perRowItemCount
-              perColumItemCount:(NSInteger)perColumItemCount
-                      itemWidth:(CGFloat)itemWidth
-                     itemHeight:(NSInteger)itemHeight
-                       paddingX:(CGFloat)paddingX
-                       paddingY:(CGFloat)paddingY
-                        atIndex:(NSInteger)index
-                         onPage:(NSInteger)page {
+- (CGRect)getFrameWithItemCount:(NSInteger)itemCount perRowItemCount:(NSInteger)perRowItemCount          perColumItemCount:(NSInteger)perColumItemCount itemWidth:(CGFloat)itemWidth itemHeight:(NSInteger)itemHeight paddingX:(CGFloat)paddingX  paddingY:(CGFloat)paddingY atIndex:(NSInteger)index                onPage:(NSInteger)page {
+    
     NSUInteger rowCount = itemCount / perRowItemCount + (itemCount % perColumItemCount > 0 ? 1 : 0);
     CGFloat insetY = (CGRectGetHeight(self.bounds) - (itemHeight + paddingY) * rowCount) / 2.0;
     
@@ -226,7 +221,6 @@
     CGRect itemFrame = CGRectMake(originX, originY + insetY, itemWidth, itemHeight);
     return itemFrame;
 }
-
 
 #pragma mark - Animation
 

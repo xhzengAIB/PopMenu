@@ -6,19 +6,37 @@
 //  Copyright (c) 2014年 华捷 iOS软件开发工程师 曾宪华. All rights reserved.
 //
 
+// ==========================================
+//  MenuItem 菜单元素  数据模型
+// ==========================================
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface MenuItem : NSObject
 
+/**
+ *   标题
+ */
 @property (nonatomic, copy) NSString *title;
+/**
+ *  配图
+ */
 @property (nonatomic, strong) UIImage *iconImage;
+/**
+ *
+ */
 @property (nonatomic, strong) UIColor *glowColor;
+/**
+ *  按钮索引
+ */
 @property (nonatomic, assign) NSUInteger index;
 
-- (instancetype)initWithTitle:(NSString *)title
-                     iconName:(NSString *)iconName
-                    glowColor:(UIColor *)glowColor
-                        index:(NSUInteger)index;
+#pragma mark - 初始话 init
+- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName  glowColor:(UIColor *)glowColor  index:(NSUInteger)index NS_DEPRECATED_IOS(2_0,2_0);
+
+- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
+
++ (instancetype)itemWithTitle:(NSString *)title iconName:(NSString *)iconName glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
 
 @end

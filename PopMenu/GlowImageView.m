@@ -8,55 +8,32 @@
 
 #import "GlowImageView.h"
 
-@interface GlowImageView () {
-    CGColorSpaceRef colorSpaceRef;
-    CGColorRef glowColorRef;
-}
 
-@end
 
 @implementation GlowImageView
 
-- (void)setGlowColor:(UIColor *)newGlowColor {
-    if (newGlowColor != _glowColor) {
-        CGColorRelease(glowColorRef);
-        
-        _glowColor = newGlowColor;
-        glowColorRef = CGColorCreate(colorSpaceRef, CGColorGetComponents(_glowColor.CGColor));
-    }
-    [self setNeedsDisplay];
+/**
+ *  设置阴影的颜色
+ */
+- (void)setGlowColor:(UIColor *)newGlowColor{
+    _glowColor = newGlowColor;
+    self.layer.shadowColor = newGlowColor.CGColor;
 }
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-        
-        self.glowOffset = CGSizeMake(0.0, 0.0);
-        self.glowAmount = 30.0;
-        self.glowColor = [UIColor greenColor];
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self =[super initWithFrame:frame]) {
+        [self setUpProperty];
     }
     return self;
 }
-
-- (void)dealloc {
-    CGColorRelease(glowColorRef);
-    CGColorSpaceRelease(colorSpaceRef);
-}
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    
-    // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    CGContextSetShadow(context, self.glowOffset, self.glowAmount);
-    CGContextSetShadowWithColor(context, self.glowOffset, self.glowAmount, glowColorRef);
-    
-    CGContextRestoreGState(context);
+/**
+ *   根据阴影 设置图层 默认属性
+ */
+- (void)setUpProperty{
+    self.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.layer.shadowOpacity = 5;
+    self.layer.masksToBounds = NO;
 }
 
 @end
