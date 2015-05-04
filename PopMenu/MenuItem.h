@@ -39,7 +39,7 @@
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
                     glowColor:(UIColor *)glowColor
-                        index:(NSUInteger)index NS_DEPRECATED_IOS(2_0);
+                        index:(NSUInteger)index NS_AVAILABLE_IOS(2_0);
 
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
