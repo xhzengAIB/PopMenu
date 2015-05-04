@@ -38,4 +38,10 @@
     return item;
 }
 
++ (instancetype)itemWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName {
+    MenuItem *item = [[self alloc] initWithTitle:title iconName:iconName glowColor:[UIColor clearColor]];
+    return item;
+}
+
 @end
