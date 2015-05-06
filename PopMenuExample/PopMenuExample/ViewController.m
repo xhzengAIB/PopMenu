@@ -31,7 +31,7 @@
 - (void)showMenu {
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:3];
     
-    MenuItem *menuItem = [MenuItem itemWithTitle:@"Flickr" iconName:@"post_type_bubble_flickr" glowColor:[UIColor colorWithRed:1.000 green:0.966 blue:0.880 alpha:0.800]];
+    MenuItem *menuItem = [MenuItem itemWithTitle:@"Flickr" iconName:@"post_type_bubble_flickr"];
     [items addObject:menuItem];
     
     menuItem = [MenuItem itemWithTitle:@"Googleplus" iconName:@"post_type_bubble_googleplus" glowColor:[UIColor colorWithRed:0.840 green:0.264 blue:0.208 alpha:0.800]];

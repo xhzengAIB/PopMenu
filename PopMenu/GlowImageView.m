@@ -17,20 +17,24 @@
  */
 - (void)setGlowColor:(UIColor *)newGlowColor {
     _glowColor = newGlowColor;
-    self.layer.shadowColor = newGlowColor.CGColor;
+    if (newGlowColor) {
+        [self setUpProperty];
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if (self =[super initWithFrame:frame]) {
-        [self setUpProperty];
+    self = [super initWithFrame:frame];
+    if (self) {
+        
     }
     return self;
 }
+
 /**
  *   根据阴影 设置图层 默认属性
  */
 - (void)setUpProperty {
-    self.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.layer.shadowColor = self.glowColor.CGColor;
     self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(-5, -5, CGRectGetWidth(self.bounds) + 10, CGRectGetHeight(self.bounds) + 10) cornerRadius:(CGRectGetHeight(self.bounds) + 10) / 2.0].CGPath;
     self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
     self.layer.shadowOpacity = 0.5;
