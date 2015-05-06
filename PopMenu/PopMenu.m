@@ -128,7 +128,10 @@
     for (int index = 0; index < items.count; index ++) {
         
         MenuItem *menuItem = items[index];
-        menuItem.index = index;
+        // 如果没有自定义index，就按照正常流程，从0开始
+        if (menuItem.index < 0) {
+            menuItem.index = index;
+        }
         MenuButton *menuButton = (MenuButton *)[self viewWithTag:kMenuButtonBaseTag + index];
         
         CGRect toRect = [self getFrameWithItemCount:items.count

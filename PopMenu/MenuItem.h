@@ -33,23 +33,40 @@
 /**
  *  按钮索引
  */
-@property (nonatomic, assign) NSUInteger index;
+@property (nonatomic, assign) NSInteger index;
 
 #pragma mark - 初始话 init
+
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName NS_AVAILABLE_IOS(2_0);
+
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
+
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                        index:(NSInteger)index NS_AVAILABLE_IOS(2_0);
+
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
                     glowColor:(UIColor *)glowColor
-                        index:(NSUInteger)index NS_AVAILABLE_IOS(2_0);
-
-- (instancetype)initWithTitle:(NSString *)title
-                     iconName:(NSString *)iconName
-                    glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
-
-+ (instancetype)itemWithTitle:(NSString *)title
-                     iconName:(NSString *)iconName
-                    glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
+                        index:(NSInteger)index NS_AVAILABLE_IOS(2_0);
 
 + (instancetype)itemWithTitle:(NSString *)title
                      iconName:(NSString *)iconName NS_AVAILABLE_IOS(2_0);
+
++ (instancetype)itemWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor NS_AVAILABLE_IOS(2_0);
+
++ (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                        index:(NSInteger)index NS_AVAILABLE_IOS(2_0);
+
++ (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                    glowColor:(UIColor *)glowColor
+                        index:(NSInteger)index NS_AVAILABLE_IOS(2_0);
 
 @end
