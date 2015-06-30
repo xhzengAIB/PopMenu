@@ -42,6 +42,7 @@ menuItem = [[MenuItem alloc] initWithTitle:@"Facebook" iconName:@"post_type_bubb
 [items addObject:menuItem];
     
 PopMenu *popMenu = [[PopMenu alloc] initWithFrame:self.view.bounds items:items];
+popMenu.menuAnimationType = kPopMenuAnimationTypeNetEase; // kPopMenuAnimationTypeSina
 [popMenu showMenuAtView:self.view];
 
 ```
