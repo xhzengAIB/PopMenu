@@ -4,4 +4,9 @@ xcode_workspace: PopMenuExample/PopMenuExample.xcworkspace
 xcode_schemes: PopMenuExample
 
 profile: PopMenuExample/Podfile
-install: make get-deps
+before_install:
+- gem install cocoapods
+export LANG=en_US.UTF-8
+brew update
+if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+pod install
