@@ -23,20 +23,6 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E4CEBE491A6BD1E50012B881"
-               BuildableName = "PopMenuExampleTests.xctest"
-               BlueprintName = "PopMenuExampleTests"
-               ReferencedContainer = "container:PopMenuExample.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
@@ -60,6 +46,20 @@
                BuildableName = "libPods-PopMenuExample-pop.a"
                BlueprintName = "Pods-PopMenuExample-pop"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4CEBE491A6BD1E50012B881"
+               BuildableName = "PopMenuExampleTests.xctest"
+               BlueprintName = "PopMenuExampleTests"
+               ReferencedContainer = "container:PopMenuExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
