@@ -6,7 +6,7 @@ xcode_schemes: PopMenuExample
 profile: PopMenuExample/Podfile
 before_install:
 - gem install cocoapods
-export LANG=en_US.UTF-8
-brew update
-if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
-pod install
+- export LANG=en_US.UTF-8
+- brew update
+- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+- pod install
