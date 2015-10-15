@@ -9,4 +9,5 @@ before_install:
 - export LANG=en_US.UTF-8
 - brew update
 - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+- cd PopMenuExample
 - pod install
