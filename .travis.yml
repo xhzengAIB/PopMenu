@@ -3,11 +3,13 @@ language: objective-c
 xcode_workspace: PopMenuExample/PopMenuExample.xcworkspace
 xcode_schemes: PopMenuExample
 
-profile: PopMenuExample/Podfile
-#before_install:
-#- gem install cocoapods
-#- export LANG=en_US.UTF-8
-#- brew update
-#- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
-#- cd PopMenuExample
-#- pod install
+#profile: PopMenuExample/Podfile
+#pod install
+before_install:
+- gem install cocoapods
+- exprot LAND=en_US.UTF-8
+- brew update
+- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+- cd PopMenuExample
+- pod install
+
