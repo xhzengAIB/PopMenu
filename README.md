@@ -61,4 +61,4 @@ popMenu.perRowItemCount = 3; // or 2
 
 ## License
 
-English: PopMenu is available under the MIT license, see the LICENSE file for more information.     
+PopMenu is available under the MIT license, see the LICENSE file for more information.     
