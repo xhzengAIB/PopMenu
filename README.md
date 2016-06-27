@@ -11,6 +11,8 @@ PopMenu is pop animation menu inspired by Sina weibo / NetEase app.
 
 ## Installation
 
+#### CocoaPods
+
 With [CocoaPods](http://cocoapods.org/), add this line to your `Podfile`.
 
 ```
@@ -18,6 +20,10 @@ pod 'PopMenu'
 ```
 
 and run `pod install`, then you're all done!
+
+#### Manually
+1. Download and drop ```/PopMenu```folder in your project.  
+2. Congratulations! 
 
 ## How to use
 
